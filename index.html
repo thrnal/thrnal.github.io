@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>servers.mom | The Best Hosting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        pink: {
+                            400: '#f472b6',
+                            500: '#ec4899',
+                            600: '#db2777',
+                            700: '#be185d',
+                            900: '#831843',
+                        },
+                        magenta: '#ff007f',
+                        roseGlow: '#ff0055',
+                        darkBg: '#08040a',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #08040a;
+            color: #f3f4f6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass {
+            background: rgba(22, 10, 26, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 0, 127, 0.2);
+        }
+        .glass-card {
+            background: rgba(18, 8, 22, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(236, 72, 153, 0.2);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(255, 0, 127, 0.6);
+            box-shadow: 0 10px 30px -10px rgba(255, 0, 127, 0.35);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #f472b6 40%, #ff007f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-pink {
+            background: linear-gradient(135deg, #ec4899 0%, #ff007f 100%);
+            box-shadow: 0 4px 20px rgba(236, 72, 153, 0.4);
+            transition: box-shadow 0.3s ease, opacity 0.2s ease;
+        }
+        .btn-pink:hover {
+            box-shadow: 0 6px 28px rgba(255, 0, 127, 0.7);
+            opacity: 0.95;
+        }
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(236, 72, 153, 0.15) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #08040a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #be185d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff007f;
+        }
+    </style>
+</head>
+<body class="bg-grid-pattern relative">
+
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-pink-600/20 rounded-full blur-[128px] pointer-events-none -z-10"></div>
+    <div class="fixed bottom-1/3 right-1/4 w-96 h-96 bg-magenta/15 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+
+    <nav class="sticky top-0 z-50 glass border-b border-pink-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl btn-pink flex items-center justify-center font-black text-xl text-white shadow-lg">
+                    <i class="fa-solid fa-server"></i>
+                </div>
+                <span class="text-2xl font-extrabold tracking-tight text-white">servers<span class="text-pink-500">.mom</span></span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#features" class="hover:text-pink-400 transition-colors">Features</a>
+                <a href="#pricing" class="hover:text-pink-400 transition-colors">Plans</a>
+                <a href="#calculator" class="hover:text-pink-400 transition-colors">Configurator</a>
+                <a href="#locations" class="hover:text-pink-400 transition-colors">Regions</a>
+                <a href="#speedtest" class="hover:text-pink-400 transition-colors">Speed Test</a>
+                <a href="#faq" class="hover:text-pink-400 transition-colors">FAQ</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="#pricing" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl btn-pink text-white font-semibold text-sm">
+                    Deploy Instance
+                </a>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white text-2xl focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden glass border-b border-pink-500/20 px-4 pt-2 pb-6 space-y-3">
+            <a href="#features" class="block text-gray-300 hover:text-pink-400 py-2">Features</a>
+            <a href="#pricing" class="block text-gray-300 hover:text-pink-400 py-2">Plans</a>
+            <a href="#calculator" class="block text-gray-300 hover:text-pink-400 py-2">Configurator</a>
+            <a href="#locations" class="block text-gray-300 hover:text-pink-400 py-2">Regions</a>
+            <a href="#speedtest" class="block text-gray-300 hover:text-pink-400 py-2">Speed Test</a>
+            <a href="#faq" class="block text-gray-300 hover:text-pink-400 py-2">FAQ</a>
+            <a href="#pricing" class="block w-full text-center px-5 py-2.5 rounded-xl btn-pink text-white font-semibold text-sm mt-4">Deploy Instance</a>
+        </div>
+    </nav>
+
+    <section class="relative pt-12 pb-20 md:pt-24 md:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-pink-500/30 text-pink-300 text-xs sm:text-sm font-semibold mb-8">
+                <span class="w-2 h-2 rounded-full bg-pink-500"></span>
+                Next-Gen Gen5 NVMe Infrastructure
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight mb-6 leading-tight">
+                Mother of All Hosting.<br>
+                <span class="text-gradient">The Best Hosting on Earth.</span>
+            </h1>
+            
+            <p class="max-w-2xl mx-auto text-lg sm:text-xl text-gray-400 mb-10 leading-relaxed">
+                Unmatched performance, ultra-low latency, and uncompromising high-availability cloud infrastructure powered by custom liquid-cooled nodes.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                <a href="#pricing" class="w-full sm:w-auto px-8 py-4 rounded-xl btn-pink text-white font-bold text-lg flex items-center justify-center gap-3">
+                    Deploy Server Now <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="#calculator" class="w-full sm:w-auto px-8 py-4 rounded-xl glass border border-pink-500/30 text-white font-bold text-lg hover:border-pink-500 hover:bg-pink-500/10 transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-sliders text-pink-400"></i> Custom Config
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-6 border-t border-pink-500/20">
+                <div class="p-4">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-white mb-1 counter" data-target="99.99">0</div>
+                    <div class="text-xs sm:text-sm text-pink-400 font-semibold">% SLA Uptime Guarantee</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-white mb-1">&lt; <span class="counter" data-target="1">0</span>ms</div>
+                    <div class="text-xs sm:text-sm text-pink-400 font-semibold">Global Network Latency</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-white mb-1"><span class="counter" data-target="12">0</span>s</div>
+                    <div class="text-xs sm:text-sm text-pink-400 font-semibold">Instant Provisioning Time</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-white mb-1"><span class="counter" data-target="250">0</span>k+</div>
+                    <div class="text-xs sm:text-sm text-pink-400 font-semibold">Active Workloads</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Engineered for Extreme Speed</h2>
+                <p class="text-gray-400 text-base sm:text-lg">Why industry leaders trust servers.mom to power their most mission-critical workloads.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden">
+                    <div class="w-14 h-14 rounded-2xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 text-2xl mb-6">
+                        <i class="fa-solid fa-bolt-lightning"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Ultra-Low Latency</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Direct Tier-1 carrier integrations guarantee lightning-fast response times globally.</p>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden">
+                    <div class="w-14 h-14 rounded-2xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 text-2xl mb-6">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">99.99% Uptime SLA</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Redundant power feeds, automated failovers, and multi-region continuous hardware backup.</p>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden">
+                    <div class="w-14 h-14 rounded-2xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 text-2xl mb-6">
+                        <i class="fa-solid fa-rocket"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Instant Provisioning</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Spin up Linux, Windows, or custom bare-metal hypervisors in less than 12 seconds.</p>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden">
+                    <div class="w-14 h-14 rounded-2xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 text-2xl mb-6">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Gen5 NVMe Storage</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Enterprise Gen5 PCI-e SSD arrays delivering over 12,000 MB/s continuous read/write speeds.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="locations" class="py-20 bg-black/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Global Network Edge</h2>
+                <p class="text-gray-400 text-base sm:text-lg">Select your deployment region to test immediate node connectivity.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <button class="region-btn glass-card p-4 rounded-xl text-center flex flex-col items-center justify-center border-pink-500" data-region="us-east-1" data-ping="12">
+                    <span class="text-2xl mb-2">🇺🇸</span>
+                    <h4 class="text-white font-bold text-sm">New York</h4>
+                    <span class="text-xs text-pink-400 font-mono mt-1">us-east-1</span>
+                </button>
+                <button class="region-btn glass-card p-4 rounded-xl text-center flex flex-col items-center justify-center" data-region="us-west-2" data-ping="24">
+                    <span class="text-2xl mb-2">🇺🇸</span>
+                    <h4 class="text-white font-bold text-sm">Silicon Valley</h4>
+                    <span class="text-xs text-pink-400 font-mono mt-1">us-west-2</span>
+                </button>
+                <button class="region-btn glass-card p-4 rounded-xl text-center flex flex-col items-center justify-center" data-region="eu-central-1" data-ping="88">
+                    <span class="text-2xl mb-2">🇩🇪</span>
+                    <h4 class="text-white font-bold text-sm">Frankfurt</h4>
+                    <span class="text-xs text-pink-400 font-mono mt-1">eu-central-1</span>
+                </button>
+                <button class="region-btn glass-card p-4 rounded-xl text-center flex flex-col items-center justify-center" data-region="eu-west-1" data-ping="76">
+                    <span class="text-2xl mb-2">🇬🇧</span>
+                    <h4 class="text-white font-bold text-sm">London</h4>
+                    <span class="text-xs text-pink-400 font-mono mt-1">eu-west-1</span>
+                </button>
+                <button class="region-btn glass-card p-4 rounded-xl text-center flex flex-col items-center justify-center" data-region="ap-northeast-1" data-ping="142">
+                    <span class="text-2xl mb-2">🇯🇵</span>
+                    <h4 class="text-white font-bold text-sm">Tokyo</h4>
+                    <span class="text-xs text-pink-400 font-mono mt-1">ap-northeast-1</span>
+                </button>
+                <button class="region-btn glass-card p-4 rounded-xl text-center flex flex-col items-center justify-center" data-region="ap-southeast-1" data-ping="165">
+                    <span class="text-2xl mb-2">🇸🇬</span>
+                    <h4 class="text-white font-bold text-sm">Singapore</h4>
+                    <span class="text-xs text-pink-400 font-mono mt-1">ap-southeast-1</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Flexible Infrastructure Plans</h2>
+                <p class="text-gray-400 text-base sm:text-lg">Select the scale your software demands. Upgrade or downgrade instantly at any time.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card rounded-2xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="inline-block px-3 py-1 rounded-full bg-pink-500/10 text-pink-400 font-semibold text-xs mb-4">VPS HOSTER</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Cloud VPS</h3>
+                        <p class="text-gray-400 text-sm mb-6">Ideal for web apps, microservices, and staging environments.</p>
+                        <div class="flex items-baseline gap-1 mb-6">
+                            <span class="text-4xl font-extrabold text-white">$9</span>
+                            <span class="text-gray-400 font-medium">/ month</span>
+                        </div>
+                        <ul class="space-y-4 text-sm text-gray-300 mb-8">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pink-400"></i> 2 vCPU Cores</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pink-400"></i> 4 GB DDR5 RAM</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pink-400"></i> 80 GB NVMe Storage</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pink-400"></i> 4 TB Bandwidth</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pink-400"></i> Free Automatic Backups</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="w-full py-3.5 rounded-xl border border-pink-500/30 text-white font-bold text-center hover:bg-pink-500/20 transition-all">Deploy VPS</a>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 flex flex-col justify-between border-2 border-pink-500 relative">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 btn-pink text-white text-xs font-black uppercase px-4 py-1.5 rounded-full tracking-wider shadow-lg">
+                        MOST POPULAR
+                    </div>
+                    <div>
+                        <div class="inline-block px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 font-semibold text-xs mb-4">HIGH PERFORMANCE</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Dedicated Bare Metal</h3>
+                        <p class="text-gray-400 text-sm mb-6">Unthrottled raw compute power for demanding workloads.</p>
+                        <div class="flex items-baseline gap-1 mb-6">
+                            <span class="text-4xl font-extrabold text-white">$79</span>
+                            <span class="text-gray-400 font-medium">/ month</span>
+                        </div>
+                        <ul class="space-y-4 text-sm text-gray-300 mb-8">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pink-400"></i> 16 Dedicated AMD Cores</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pink-400"></i> 64 GB ECC RAM</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pink-400"></i> 1 TB Gen5 NVMe</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pink-400"></i> Unmetered 10 Gbps Port</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pink-400"></i> Full Root / IPMI Access</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="w-full py-3.5 rounded-xl btn-pink text-white font-bold text-center shadow-lg">Deploy Dedicated</a>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="inline-block px-3 py-1 rounded-full bg-pink-500/10 text-pink-400 font-semibold text-xs mb-4">ENTERPRISE SCALE</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Cloud Cluster</h3>
+                        <p class="text-gray-400 text-sm mb-6">Multi-region managed cluster with auto-scaling setup.</p>
+                        <div class="flex items-baseline gap-1 mb-6">
+                            <span class="text-4xl font-extrabold text-white">$199</span>
+                            <span class="text-gray-400 font-medium">/ month</span>
+                        </div>
+                        <ul class="space-y-4 text-sm text-gray-300 mb-8">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pink-400"></i> Auto-Scaling Nodes</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pink-400"></i> 128 GB Memory Pool</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pink-400"></i> Multi-Region Failover</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pink-400"></i> Advanced DDoS Mitigation</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-pink-400"></i> 24/7 Dedicated Support</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="w-full py-3.5 rounded-xl border border-pink-500/30 text-white font-bold text-center hover:bg-pink-500/20 transition-all">Deploy Cluster</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculator" class="py-20 bg-black/50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-white mb-3">Custom Server Configurator</h2>
+                <p class="text-gray-400">Tailor precise vCPU, RAM, and NVMe resources for your specific load.</p>
+            </div>
+
+            <div class="glass p-8 rounded-3xl border border-pink-500/20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between text-sm font-bold text-white mb-2">
+                                <span>vCPU Cores</span>
+                                <span id="cpu-val" class="text-pink-400 font-mono">8 Cores</span>
+                            </div>
+                            <input type="range" id="cpu-slider" min="1" max="64" value="8" step="1" class="w-full accent-pink-500 bg-gray-800 rounded-lg h-2 cursor-pointer">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-bold text-white mb-2">
+                                <span>RAM Memory</span>
+                                <span id="ram-val" class="text-pink-400 font-mono">32 GB</span>
+                            </div>
+                            <input type="range" id="ram-slider" min="2" max="256" value="32" step="2" class="w-full accent-pink-500 bg-gray-800 rounded-lg h-2 cursor-pointer">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-bold text-white mb-2">
+                                <span>NVMe Storage</span>
+                                <span id="ssd-val" class="text-pink-400 font-mono">500 GB</span>
+                            </div>
+                            <input type="range" id="ssd-slider" min="50" max="4000" value="500" step="50" class="w-full accent-pink-500 bg-gray-800 rounded-lg h-2 cursor-pointer">
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-2xl text-center border border-pink-500/30 flex flex-col items-center justify-center">
+                        <span class="text-sm text-gray-400 font-medium mb-2">Estimated Monthly Total</span>
+                        <div class="text-5xl font-black text-white mb-6">
+                            $<span id="calc-price">42</span><span class="text-lg text-gray-400 font-normal">/mo</span>
+                        </div>
+                        <button class="w-full py-3.5 rounded-xl btn-pink text-white font-bold shadow-lg">
+                            Instant Deploy Config
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="speedtest" class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-extrabold text-white mb-4">Interactive Network Speed Test</h2>
+            <p class="text-gray-400 mb-10">Simulate ultra-low latency and ping directly to our nearest servers.mom node.</p>
+
+            <div class="glass p-8 sm:p-12 rounded-3xl border border-pink-500/20 text-center relative overflow-hidden">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+                    <div class="p-4 rounded-xl bg-black/50 border border-pink-500/20">
+                        <div class="text-xs text-gray-400 uppercase tracking-wider mb-1">Latency (Ping)</div>
+                        <div id="test-ping" class="text-3xl font-bold text-pink-400">-- ms</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-black/50 border border-pink-500/20">
+                        <div class="text-xs text-gray-400 uppercase tracking-wider mb-1">Download Speed</div>
+                        <div id="test-dl" class="text-3xl font-bold text-white">-- Gbps</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-black/50 border border-pink-500/20">
+                        <div class="text-xs text-gray-400 uppercase tracking-wider mb-1">Upload Speed</div>
+                        <div id="test-ul" class="text-3xl font-bold text-white">-- Gbps</div>
+                    </div>
+                </div>
+
+                <div id="progress-bar-container" class="w-full bg-gray-800 rounded-full h-2 mb-8 hidden">
+                    <div id="progress-bar" class="bg-gradient-to-r from-pink-500 to-magenta h-2 rounded-full w-0 transition-all duration-300"></div>
+                </div>
+
+                <button id="start-test-btn" class="px-8 py-4 rounded-xl btn-pink text-white font-bold text-lg inline-flex items-center gap-3">
+                    <i class="fa-solid fa-gauge-high"></i> Run Speed Test
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-20 bg-black/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-white mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-400">Everything you need to know about servers.mom hosting.</p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="glass-card rounded-xl p-6 cursor-pointer faq-item">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-bold text-white">How fast is server provisioning?</h3>
+                        <i class="fa-solid fa-chevron-down text-pink-400 transition-transform"></i>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-4 hidden faq-answer">All Cloud VPS and standard Bare Metal configurations are automatically deployed in less than 12 seconds following payment confirmation.</p>
+                </div>
+
+                <div class="glass-card rounded-xl p-6 cursor-pointer faq-item">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-bold text-white">What DDoS protection is included?</h3>
+                        <i class="fa-solid fa-chevron-down text-pink-400 transition-transform"></i>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-4 hidden faq-answer">Every single instance includes enterprise-grade, always-on 3.2 Tbps DDoS mitigation at no extra charge, filtering malicious traffic seamlessly.</p>
+                </div>
+
+                <div class="glass-card rounded-xl p-6 cursor-pointer faq-item">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-bold text-white">Can I upgrade or downgrade specs at any time?</h3>
+                        <i class="fa-solid fa-chevron-down text-pink-400 transition-transform"></i>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-4 hidden faq-answer">Yes, our cloud dashboard allows on-the-fly resource scaling. You can adjust vCPU, RAM, or storage with zero downtime on supported operating systems.</p>
+                </div>
+
+                <div class="glass-card rounded-xl p-6 cursor-pointer faq-item">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-bold text-white">Are custom ISOs and custom OS installs supported?</h3>
+                        <i class="fa-solid fa-chevron-down text-pink-400 transition-transform"></i>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-4 hidden faq-answer">Absolutely. You can upload any custom ISO image or attach network boot mirrors directly from your management dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-pink-500/20 bg-black/90 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div class="md:col-span-1">
+                    <a href="#" class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg btn-pink flex items-center justify-center font-bold text-white">
+                            <i class="fa-solid fa-server text-sm"></i>
+                        </div>
+                        <span class="text-xl font-extrabold tracking-tight text-white">servers<span class="text-pink-500">.mom</span></span>
+                    </a>
+                    <p class="text-gray-400 text-sm max-w-sm">The Mother of All Hosting. Premium cloud performance, ultra-low latency infrastructure, and bulletproof security.</p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4">Products</h4>
+                    <ul class="space-y-2.5 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-pink-400 transition-colors">Cloud VPS</a></li>
+                        <li><a href="#" class="hover:text-pink-400 transition-colors">Dedicated Servers</a></li>
+                        <li><a href="#" class="hover:text-pink-400 transition-colors">Kubernetes Clusters</a></li>
+                        <li><a href="#" class="hover:text-pink-400 transition-colors">Object Storage</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4">Network</h4>
+                    <ul class="space-y-2.5 text-sm text-gray-400">
+                        <li><a href="#locations" class="hover:text-pink-400 transition-colors">Regions</a></li>
+                        <li><a href="#" class="hover:text-pink-400 transition-colors">Looking Glass</a></li>
+                        <li><a href="#speedtest" class="hover:text-pink-400 transition-colors">Speed Test</a></li>
+                        <li><a href="#" class="hover:text-pink-400 transition-colors">Uptime Status</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4">Company</h4>
+                    <ul class="space-y-2.5 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-pink-400 transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-pink-400 transition-colors">Contact Support</a></li>
+                        <li><a href="#" class="hover:text-pink-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-pink-400 transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-pink-500/20 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+                <p>&copy; 2026 servers.mom. All rights reserved. The Best Hosting.</p>
+                <p>Ultra-fast pink liquid-cooled nodes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const cpuSlider = document.getElementById('cpu-slider');
+        const ramSlider = document.getElementById('ram-slider');
+        const ssdSlider = document.getElementById('ssd-slider');
+        
+        const cpuVal = document.getElementById('cpu-val');
+        const ramVal = document.getElementById('ram-val');
+        const ssdVal = document.getElementById('ssd-val');
+        const calcPrice = document.getElementById('calc-price');
+
+        function updatePrice() {
+            const cpu = parseInt(cpuSlider.value);
+            const ram = parseInt(ramSlider.value);
+            const ssd = parseInt(ssdSlider.value);
+
+            cpuVal.textContent = cpu + ' Cores';
+            ramVal.textContent = ram + ' GB';
+            ssdVal.textContent = ssd + ' GB';
+
+            const price = Math.round((cpu * 3) + (ram * 0.5) + (ssd * 0.03));
+            calcPrice.textContent = price;
+        }
+
+        [cpuSlider, ramSlider, ssdSlider].forEach(slider => {
+            slider.addEventListener('input', updatePrice);
+        });
+
+        let selectedPingBase = 12;
+        const regionBtns = document.querySelectorAll('.region-btn');
+        regionBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                regionBtns.forEach(b => b.classList.remove('border-pink-500'));
+                btn.classList.add('border-pink-500');
+                selectedPingBase = parseInt(btn.getAttribute('data-ping'));
+            });
+        });
+
+        const startTestBtn = document.getElementById('start-test-btn');
+        const testPing = document.getElementById('test-ping');
+        const testDl = document.getElementById('test-dl');
+        const testUl = document.getElementById('test-ul');
+        const progressBarContainer = document.getElementById('progress-bar-container');
+        const progressBar = document.getElementById('progress-bar');
+
+        startTestBtn.addEventListener('click', () => {
+            startTestBtn.disabled = true;
+            startTestBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            progressBarContainer.classList.remove('hidden');
+            
+            testPing.textContent = '...';
+            testDl.textContent = '...';
+            testUl.textContent = '...';
+
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 10;
+                progressBar.style.width = progress + '%';
+
+                if (progress === 30) {
+                    testPing.textContent = (selectedPingBase + Math.floor(Math.random() * 3)) + ' ms';
+                }
+                if (progress === 70) {
+                    testDl.textContent = (Math.random() * 2 + 8.5).toFixed(2) + ' Gbps';
+                }
+                if (progress === 100) {
+                    testUl.textContent = (Math.random() * 2 + 8.2).toFixed(2) + ' Gbps';
+                    clearInterval(interval);
+                    startTestBtn.disabled = false;
+                    startTestBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            }, 200);
+        });
+
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.querySelector('.faq-answer');
+                const icon = item.querySelector('i');
+                answer.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        const counters = document.querySelectorAll('.counter');
+        let animated = false;
+
+        function animateCounters() {
+            if (animated) return;
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 1200;
+                const increment = target / (duration / 16);
+                let current = 0;
+
+                const updateCount = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Number.isInteger(target) ? Math.ceil(current) : current.toFixed(2);
+                        setTimeout(updateCount, 16);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                updateCount();
+            });
+            animated = true;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                animateCounters();
+            }
+        });
+        setTimeout(animateCounters, 300);
+    </script>
+</body>
+</html>
